@@ -5,11 +5,25 @@ In this repo we aim to reproduce the experimental work proposed in "Performance 
 ## To-do list
 ### Pre-encoding
   - [x] Acquire holographic data
-  - [ ] Undestand the data
-    - [ ]  Grayscale
+  - [o] Undestand the data
+    - [x]  Grayscale
     - [ ]  RGB
-  - [ ]  Reconstruct hologram using a practical reconstruction algorithm 
+  - [o]  Reconstruct hologram using a practical reconstruction algorithm (ASM)
   - [ ]  Categorize the data (raw data, processed data, ...)
-  - [ ]  Analysis tool for unprocessed data
+  - [ ]  Data analysis
+   - [ ]  Real
+   - [ ]  Imaginary
 ### Encoding
+#### Grayscale
+- [X] HEVC/H.265
+- [ ] JPEG 2000
+- [ ] AV1
+- [ ] VP9 (?)
+#### RGB
+- [ ] HEVC/H.265
+- [ ] JPEG 2000
+- [ ] AV1
+- [ ] VP9 (?)
 ### Post encoding
+- [ ] PSNR
+- [ ] CR (?)
