@@ -12,7 +12,7 @@ FlippedHol = flip(FlippedHol, 2);
 U = IFT2Dc(FT2Dc(FlippedHol).*prop);
 hologram = abs(U).^2;
 
-figure, imshow(hologram, []);
+%figure, imshow(hologram, []);
 
 fid = fopen(strcat('bin/b_hologram.bin'), 'w');
 fwrite(fid, hologram, 'real*4');

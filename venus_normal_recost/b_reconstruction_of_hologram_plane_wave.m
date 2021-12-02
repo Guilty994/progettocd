@@ -41,8 +41,9 @@ for ii=1:S
     recO = abs(IFT2Dc(FT2Dc(hologramO).*prop));
     reconstructionO(:,:,ii) = recO(:,:);
     
-    imshow(abs(reconstructionO(:,:,ii)), []);
-    colormap(gray)
+    %imshow(abs(reconstructionO(:,:,ii)), []);
+    %colormap(gray)
+    
     pause(0.01);
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % SAVE RECONSTRUCTION AS BIN FILE
