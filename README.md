@@ -5,10 +5,10 @@ In this repo we aim to reproduce the experimental work proposed in "Performance 
 ## To-do list
 ### Pre-encoding
   - [x] Acquire holographic data
-  - [o] Undestand the data
+  - [-] Undestand the data
     - [x]  Grayscale
     - [ ]  RGB
-  - [o]  Reconstruct hologram using a practical reconstruction algorithm (ASM)
+  - [-]  Reconstruct hologram using a practical reconstruction algorithm (ASM)
   - [ ]  Categorize the data (raw data, processed data, ...)
   - [ ]  Data analysis
    - [ ]  Real
