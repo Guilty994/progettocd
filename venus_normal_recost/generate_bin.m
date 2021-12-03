@@ -1,7 +1,7 @@
 N = 1080;                   % number of pixels
 M = 1920;
 lambda = 6.328000000000000e-07;
-area = 0.8;           % area sidelength in meter
+area = 0.8;      % area sidelength in meter
 z = 0.4981;                  % z in meter
 
 prop = Propagator(N, M, lambda, area, z);
