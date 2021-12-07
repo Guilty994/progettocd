@@ -3,6 +3,7 @@
 In this repo we aim to reproduce the experimental work proposed in "Performance of Standard Codecs and Image Quality Assessment at Different Distances and Perspectives" to evaluate CGH (Computer Generated Hologram) generated with differents algorithms.
 
 ## To-do list
+  - [ ] User manual
 ### Pre-encoding
   - [x] Acquire holographic data
   - [ ] Undestand the data
