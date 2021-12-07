@@ -18,4 +18,7 @@ filename = 'yuv/HOL_3D_venus.yuv';
 numfrm = 1;
 yuv_export(Y_Hol3D,U_Hol3D,V_Hol3D,filename,numfrm);
 
+%% Calculate correlation
+calculate_correlation;
+
 
