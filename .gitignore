@@ -1,7 +1,10 @@
-venus_normal_recost/jpeg/*
-venus_normal_recost/bin/*
-venus_normal_recost/yuv/*
-venus_squared_recost/jpeg/*
-venus_squared_recost/bin/*
-venus_squared_recost/yuv/*
-YUV/*
+dataset/venus/jpeg/*
+dataset/venus/bin/*
+dataset/venus/yuv/*
+dataset/venus_squared_recost/jpeg/*
+dataset/venus_squared_recost/bin/*
+dataset/venus_squared_recost/yuv/*
+dataset/cat8KD/jpeg/*
+dataset/cat8KD/bin/*
+dataset/cat8KD/yuv/*
+dataset/cat8KD/CGH_cat8KD.mat

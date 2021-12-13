@@ -1,12 +1,12 @@
 % si posso aggiungere come parametri della funzione i valori N ed M
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function [hologram] = generate_bin(dataset_path, filename, Hol)
-N = 1080;             % pixel height
-M = 1920;             % pixel width
-lambda = 6.3280e-07;  % wavelenght
-area = 0.8;           % area sidelength in meter
-z = 0.4981;           % z in meter
+function [hologram] = generate_bin(dataset_path, filename, Hol, N, M, lambda, area, z)
+%N = 1080;             % pixel height
+%M = 1920;             % pixel width
+%lambda = 6.3280e-07;  % wavelenght
+%area = 0.8;           % area sidelength in meter
+%z = 0.4981;           % z in meter
 
 prop = Propagator(N, M, lambda, area, z);
 

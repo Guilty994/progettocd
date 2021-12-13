@@ -12,16 +12,16 @@
 % The version of Matlab for this code is R2010b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function hologram_reconstruction(datasetpath,filename)
+function hologram_reconstruction(datasetpath,filename, N, M, lambda, area)
 % PARAMETERS
 
-N = 1080;               % pixel height
-M = 1920;               % pixel width
-lambda = 6.3280e-07;    % wavelength in meter
-area = 0.01;            % area size in meter
-z_start = 0;            % z start in meter
-z_end = 0.00000000001;  % z end in meter
-z_step = 0.00000000001; % z step in meter
+%N = 1080;               % pixel height
+%M = 1920;               % pixel width
+%lambda = 6.3280e-07;    % wavelength in meter
+%area = 0.01;            % area size in meter
+z_start = 0.014;            % z start in meter
+z_end = 0.02;  % z end in meter
+z_step = 0.005; % z step in meter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % READING HOLOGRAM OBJECT
 
