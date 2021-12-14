@@ -8,3 +8,4 @@ dataset/cat8KD/jpeg/*
 dataset/cat8KD/bin/*
 dataset/cat8KD/yuv/*
 dataset/cat8KD/CGH_cat8KD.mat
+dataset/3D_Multi/Hol_3D_multi.mat
