@@ -11,7 +11,7 @@ addpath(codec_path);
 
 load(strcat(hologram_name, '.mat'));
 
-matrix_to_pgm(Hol,strcat(hologram_path,'/yuv'),hologram_name);
+matrix_to_pgm(Hol,hologram_path,hologram_name);
 
 [real_matrix, imag_matrix] = split_complex(Hol);
 
