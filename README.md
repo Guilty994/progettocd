@@ -4,6 +4,9 @@ In this repo we aim to reproduce the experimental work proposed in "Performance 
 
 ## To-do list
   - [ ] User manual
+### Matlab Add-on required
+  - Signal Processing Toolbox
+  - Image Processing Toolbox
 ### Pre-encoding
   - [x] Acquire holographic data
   - [ ] Undestand the data
