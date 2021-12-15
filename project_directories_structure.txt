@@ -1,0 +1,65 @@
+	+ root  +
+		    |
+			+ codec +
+			|		|
+			|		+ HEVC
+			|		|
+			|		+ JPEG2000 +
+			|		|		   |
+			|		|		   + lib +
+			|		|		   	 	 |
+			|		|				 + kakadu
+			|		|		   	
+			|		|
+			|		+ SVT-AV1
+			|
+		    + dataset +
+		    |		 |
+		    |		 + Interfere1 +
+		    |		 |			  |
+		    |		 |			  + 3D_Cat +
+		    |		 |			  |		   |
+		    |		 |			  |		   + bin
+			|		 |			  |		   |
+			|		 |			  |		   + jpeg
+			|		 |			  |		   |
+			|		 |			  |		   + yuv
+			|		 |    		  |
+			|		 |			  + 3D_Multi +
+			|		 |			  |		   	 |
+			|		 |			  |		     + bin
+			|		 |			  |		     |
+			|		 |			  |		     + jpeg
+			|		 |			  |		     |
+			|		 |			  |		     + yuv
+			|		 |			  |
+			|		 |			  + 3D_Venus +
+			|		 |			  |		     |
+			|		 |			  |		     + bin
+			|		 |			  |		     |
+			|		 |			  |		     + jpeg
+			|		 |			  |		     |
+			|		 |			  |		     + yuv
+			|		 |
+			|		 + Interfere2 + 
+			|		 |			  | 
+			|		 |			  + cat8KD +
+			|		 |			  |		   |
+			|		 |			  |		   + bin
+			|		 |			  |		   |
+			|		 |			  |		   + jpeg
+			|		 |			  |		   |
+			|		 |			  |		   + yuv
+			|		 |			  |
+			|		 |			  + venus8KD +
+			|		 |			  |		     |
+			|		 |			  |		     + bin
+			|		 |			  |		     |
+			|		 |			  |		     + jpeg
+			|		 |			  |		     |
+			|		 |			  |		     + yuv		
+			+ script +
+			|		 |
+			|		 + TF
+			|		 |
+			|        + YUV
