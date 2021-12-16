@@ -22,12 +22,12 @@ for i = 1:2
     %(problema di runtime)
     encode_hevc_command = strcat('cd codec/HEVC && TAppEncoder.exe -c encoder_intra_main.cfg -i ../../', ...
     filename, ' -fr 1 -f 1 --SourceWidth=', int2str(width), ' --SourceHeight=', int2str(height), ...
-    ' --InputChromaFormat=400 --Profile=main_444_intra -q', {' '}, q , ' --InputBitDepth=8 --OutputBitDepth=8 -o ../../', hologram_path,'yuv/output.yuv -b ../../', hologram_path,'bin/output.bin')
+    ' --InputChromaFormat=400 --Profile=main_444_intra -q', {' '}, q , ' --InputBitDepth=8 --OutputBitDepth=8 -o ../../', hologram_path,'yuv/output_hevc.yuv -b ../../', hologram_path,'bin/output_hevc.bin')
 
 dos(encode_hevc_command{1});
 
 
-[Y_Hol3D_decoded,U_Hol3D_decoded,V_Hol3D_decoded] = yuv_import('./codec/HEVC/output.yuv',[width height],1);
+[Y_Hol3D_decoded,U_Hol3D_decoded,V_Hol3D_decoded] = yuv_import(strcat(hologram_path, 'yuv/output_hevc.yuv'),[width height],1);
 
 snr_values(i) = snr(matrix,Y_Hol3D_decoded{1,1});
 

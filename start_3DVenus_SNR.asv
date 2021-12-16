@@ -1,10 +1,8 @@
-
-
 addpath('./script/');
 addpath("./script/YUV/");
 
-hologram_path = './dataset/Interfere1/3D_Multi/';
-hologram_name = 'Hol_3D_multi';
+hologram_path = './dataset/Interfere1/3D_Venus/';
+hologram_name = 'Hol_3D_venus';
 
 addpath(hologram_path);
 
@@ -34,6 +32,7 @@ snr_values_jpeg2000_imag = calculate_SNR_JPEG2000(imag_matrix, hologram_name, ho
 %AV1
 snr_values_av1_real = calculate_SNR_AV1(real_matrix_rescaled_255, 1080, 1920, hologram_name, hologram_path)
 snr_values_av1_imag = calculate_SNR_AV1(imag_matrix_rescaled_255, 1080, 1920, hologram_name, hologram_path)
+
 
 
 
