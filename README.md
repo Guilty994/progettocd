@@ -20,9 +20,9 @@ In this repo we aim to reproduce the experimental work proposed in "Performance 
 ### Encoding
 #### Grayscale
 - [X] HEVC/H.265
-- [ ] JPEG 2000
-- [ ] AV1
-- [ ] VP9 (?)
+- [X] JPEG 2000
+- [X] svt-AV1
+- [X] libaom-AV1
 #### RGB
 - [ ] HEVC/H.265
 - [ ] JPEG 2000
