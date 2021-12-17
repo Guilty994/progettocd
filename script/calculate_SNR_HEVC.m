@@ -13,7 +13,7 @@ yuv_export(Y_Hol3D,U_Hol3D,V_Hol3D,filename,numfrm);
 q_values = [4 7 10 20 30 40 51];
 snr_values = [];
 
-for i = 1:2
+for i = 1:1
     q = q_values(i);
     q = int2str(q);
     %metto le parentesi graffe prima di q perché altrimenti non mette lo
