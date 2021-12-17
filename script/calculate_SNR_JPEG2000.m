@@ -27,10 +27,13 @@ for i = 1:length(bit_rates)
 end
 
 %conversion from .pgm to raw matrix
+rescaled_start_matrix_uint8 = imread(strcat(hologram_path, hologram_name,'.pgm'));
+rescaled_start_matrix = im2single(rescaled_start_matrix_uint8);
 for i = 1:length(bit_rates)
     matrix_regen_uint8 = imread(strcat(hologram_path, pgm_generated(i)));
     matrix_regen = im2single(matrix_regen_uint8);
     %save(strcat(hologram_path, pgm_generated(i), '.mat'), 'matrix_regen');
-    snr_values(i) = snr(rescale(matrix, 0, max(max(matrix_regen))), matrix_regen);
+    %snr_values(i) = snr(rescale(matrix, 0, max(max(matrix_regen))), matrix_regen);
+    snr_values(i) = snr(rescaled_start_matrix, matrix_regen);
 end
 %snr evaluation

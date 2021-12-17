@@ -33,8 +33,9 @@ imag_matrix_rescaled_255 = rescale(imag_matrix,0, 255);
 snr_values_av1_real = calculate_SNR_AV1(real_matrix_rescaled_255, 1080, 1920, hologram_name, hologram_path)
 snr_values_av1_imag = calculate_SNR_AV1(imag_matrix_rescaled_255, 1080, 1920, hologram_name, hologram_path)
 
-
-
+%liaom av1
+snr_values_libaom_real = calculate_SNR_AV1_libaom(real_matrix_rescaled_255, 1080, 1920, hologram_name, hologram_path)
+%snr_values_libaom_imag = calculate_SNR_AV1_libaom(imag_matrix_rescaled_255, 1080, 1920, hologram_name, hologram_path)
 
 
 %conversione in formato hevc matrice reale 
