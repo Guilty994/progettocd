@@ -12,7 +12,7 @@
 % The version of Matlab for this code is R2010b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function hologram_reconstruction(datasetpath,filename, N, M, lambda, area)
+function[reconstructionO] = hologram_reconstruction(datasetpath,filename, N, M, lambda, area)
 % PARAMETERS
 
 %N = 1080;               % pixel height
@@ -34,6 +34,7 @@ fclose(fid);
 S = round((z_end - z_start)/z_step);
 reconstructionO = zeros(N,M,S);
 
+
 for ii=1:S 
     z = z_start + ii*z_step;
     prop = Propagator(N, M, lambda, area, z);
@@ -54,7 +55,7 @@ for ii=1:S
     % SAVE RECONSTRUCTION AS JPG FILE
     p = recO;
     p = 255*(p - min(min(p)))/(max(max(p)) - min(min(p)));
-    imwrite (p, gray, strcat(datasetpath,'jpeg/', filename,'_z_',int2str(z*1000000),'um.jpg'));
+    %imwrite (p, gray, strcat(datasetpath,'jpeg/', filename,'_z_',int2str(z*1000000),'um.jpg'));
 
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

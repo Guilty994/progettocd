@@ -1,5 +1,5 @@
-function[snr_values] =  calculate_SNR_JPEG2000(matrix, hologram_name, hologram_path)
-snr_values = [];    
+function[regen_matrices] =  encode_decode_JPEG2000(matrix, hologram_name, hologram_path)
+regen_matrices = {};    
 %conversione matrice in .pgm
 imwrite(matrix,strcat(hologram_path, hologram_name,'.pgm'));
 
@@ -31,9 +31,14 @@ rescaled_start_matrix_uint8 = imread(strcat(hologram_path, hologram_name,'.pgm')
 rescaled_start_matrix = im2single(rescaled_start_matrix_uint8);
 for i = 1:length(bit_rates)
     matrix_regen_uint8 = imread(strcat(hologram_path, pgm_generated(i)));
-    matrix_regen = im2single(matrix_regen_uint8);
+    regen_matrices{i} = im2single(matrix_regen_uint8);
     %save(strcat(hologram_path, pgm_generated(i), '.mat'), 'matrix_regen');
     %snr_values(i) = snr(rescale(matrix, 0, max(max(matrix_regen))), matrix_regen);
-    snr_values(i) = snr(rescaled_start_matrix, minus(rescaled_start_matrix,matrix_regen));
+    %snr_values(i) = snr(rescaled_start_matrix, minus(rescaled_start_matrix,matrix_regen));
 end
 %snr evaluation
+
+
+
+
+
