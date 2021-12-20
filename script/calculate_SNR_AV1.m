@@ -29,7 +29,7 @@ dos(encode_av1_command{1});
 
 [Y_Hol3D_decoded,U_Hol3D_decoded,V_Hol3D_decoded] = yuv_import(strcat(hologram_path, 'yuv/output_av1.yuv'),[width height],1);
 
-snr_values(i) = snr(matrix,Y_Hol3D_decoded{1,1});
+snr_values(i) = snr(matrix,minus(matrix,Y_Hol3D_decoded{1,1}));
 
 %figure,imshow(Y_Hol3D_decoded{1,1}, [])
 %figure,imshow(matrix, [])
