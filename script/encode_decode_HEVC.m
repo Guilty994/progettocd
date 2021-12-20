@@ -1,4 +1,6 @@
-function [snr_values] = calculate_SNR_HEVC(matrix, height, width, hologram_name, hologram_path)
+function [regen_matrices] = encode_decode_HEVC(matrix, height, width, hologram_name, hologram_path)
+
+regen_matrices = {}; % return values (matrices regenerated after encode and decode steps)
 
 Y_Hol3D = cell(1,1);
 U_Hol3D = cell(1,1);
@@ -11,11 +13,10 @@ numfrm = 1;
 yuv_export(Y_Hol3D,U_Hol3D,V_Hol3D,filename,numfrm);
 
 q_values = [4 7 10 20 30 40 51];
-snr_values = [];
 
 for i = 1:1
-    q = q_values(i);
-    q = int2str(q);
+    q = q_values(i); %i-th value acquisition
+    q = int2str(q);  %integer to string conversion
     %metto le parentesi graffe prima di q perché altrimenti non mette lo
     %spazio infatti dopo devo chiamare encode_hevc_command{1} perché il
     %comando è diventato un cell array
@@ -26,10 +27,10 @@ for i = 1:1
 
 dos(encode_hevc_command{1});
 
+% ~ = ingnored value
+[Y_Hol3D_decoded,~,~] = yuv_import(strcat(hologram_path, 'yuv/output_hevc.yuv'),[width height],1);
 
-[Y_Hol3D_decoded,U_Hol3D_decoded,V_Hol3D_decoded] = yuv_import(strcat(hologram_path, 'yuv/output_hevc.yuv'),[width height],1);
-
-snr_values(i) = snr(matrix,minus(matrix, Y_Hol3D_decoded{1,1}));
+regen_matrices{i} = Y_Hol3D_decoded{1,1};
 
 %figure,imshow(Y_Hol3D_decoded{1,1}, [])
 %figure,imshow(matrix, [])

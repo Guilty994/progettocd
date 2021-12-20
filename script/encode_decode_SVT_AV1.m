@@ -26,8 +26,8 @@ for i = 1:1
 
 dos(encode_av1_command{1});
 
-
-[Y_Hol3D_decoded,U_Hol3D_decoded,V_Hol3D_decoded] = yuv_import(strcat(hologram_path, 'yuv/output_av1.yuv'),[width height],1);
+% ~ = ingnored value
+[Y_Hol3D_decoded,~,~] = yuv_import(strcat(hologram_path, 'yuv/output_av1.yuv'),[width height],1);
 
 regen_matrices{i} = Y_Hol3D_decoded{1,1};
 
