@@ -54,7 +54,14 @@ width = 1920;  % hologram width (px)
 %calculate_SNR(imag_matrix,matrices_regen_libaom_av1_real)
 %calculate_SNR(imag_matrix,matrices_regen_libaom_av1_imag)
 
-%psnr_values_jpeg2000_real = calculate_PSNR_JPEG2000(real_matrix, hologram_name, hologram_path, wlen, height, width, 0.8, zrec)
+%% CALCOLO PSNR
+% 1. (PER OGNI CODEC) Prendere le matrici reale ed immaginaria decompresse e dequantizzarle
+%    e ripammarle al loro range originale --> QUANDO VIENE EFFETTUATO QUESTO PUNTO?
+% 2. combinare le due matrici decompresse in un'unica matrice complessa
+% 3. effettuare ricostruzione numerica con ASM della matrice complessa ottenuta al punto 2.
+% 4. effettuare ricostruzione numerica con ASM della matrice complessa iniziale (raw hologram)
+% 5. effettuare il calcolo PSNR tra la matrice ottenuta al punto 4. e quella ottenuta al punto 3.
+
 
 %% RENDERING BLOCK
 % Regenerated vanilla (raw) hologram
@@ -66,6 +73,7 @@ reconstruction_vanilla = hologram_reconstruction(hologram_path,strcat(hologram_n
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for SVT-AV1)
 %Regenerated SVT-AV1 encoded hologram
+% LE MATRICI REALE ed IMMAGINARIA sono STATE RIPAMAPPATE AL LORO RANGE ORIGINALE?
 matrix_regen_svt_av1_complex = complex(matrices_regen_svt_av1_real{1}, matrices_regen_svt_av1_imag{1});
 
 hologram_SVT_AV1 = generate_bin(hologram_path, strcat(hologram_name,'_SVT_AV1'),matrix_regen_svt_av1_complex,height, width, wlen, area, zrec);
@@ -74,7 +82,7 @@ hologram_SVT_AV1 = generate_bin(hologram_path, strcat(hologram_name,'_SVT_AV1'),
 reconstruction_SVT_AV1 = hologram_reconstruction(hologram_path,strcat(hologram_name,'_SVT_AV1'), height, width, wlen, area);
 % END of COMPLEX REGENERATION and RENDERING BLOCK (for SVT-AV1)
 
-% psnr(regenerated matrix (test), reference matrix)
+% function parameters: psnr(regenerated matrix (test), reference matrix)
 calculated_psnr_svt_av1 = psnr(reconstruction_SVT_AV1,reconstruction_vanilla) 
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for JPEG 2000)
@@ -85,6 +93,6 @@ calculated_psnr_svt_av1 = psnr(reconstruction_SVT_AV1,reconstruction_vanilla)
 
 %% Reconstruction using ASM
 %reconstruction_JPEG2000 = hologram_reconstruction(hologram_path, strcat(hologram_name,'_JPEG2000'), height, width, wlen, area);
-% psnr(regenerated matrix (test), reference matrix)
-%[calculated_psnr_jpeg2000, ~] = psnr(reconstruction_JPEG2000,reconstruction_vanilla) 
+% function parameters: psnr(regenerated matrix (test), reference matrix)
+%calculated_psnr_jpeg2000 = psnr(reconstruction_JPEG2000,reconstruction_vanilla) 
 % END of COMPLEX REGENERATION and RENDERING BLOCK (for JPEG 2000)
