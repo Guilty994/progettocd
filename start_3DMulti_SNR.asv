@@ -129,10 +129,10 @@ reconstruction_SVT_AV1 = hologram_reconstruction(hologram_path,strcat(hologram_n
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for LIBAOM-AV1 regenerated complex matrix)
 
-matrix_regen_libaom_av1_complex = complex(matrices_regen_libaom_av1_real{1}, matrices_regen_libaom_av1_imag{1});
-hologram_libaom_av1 = generate_bin(hologram_path, strcat(hologram_name,'_LIBAOM_AV1'),matrix_regen_libaom_av1_complex,height, width, wlen, area, zrec);
+matrix_regen_libaom_av1_complex = complex(matrices_regen_svt_av1_real{1}, matrices_regen_svt_av1_imag{1});
+hologram_SVT_AV1 = generate_bin(hologram_path, strcat(hologram_name,'_LIBAOM_AV1'),matrix_regen_libaom_av1_complex,height, width, wlen, area, zrec);
 % Reconstruction using ASM
-reconstruction_libaom_av1 = hologram_reconstruction(hologram_path,strcat(hologram_name,'_LIBAOM_AV1'), height, width, wlen, area);
+reconstruction_SVT_AV1 = hologram_reconstruction(hologram_path,strcat(hologram_name,'_LIBAOM_AV1'), height, width, wlen, area);
 % -- END of COMPLEX REGENERATION and RENDERING BLOCK (for LIBAOM-AV1 regenerated complex matrix) --
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for JPEG2000 regenerated complex matrix)
@@ -151,9 +151,7 @@ end
 
 %% PSNR calculations
 
-%calculated_psnr_hevc = psnr(reconstruction_HEVC,reconstruction_rescaled_vanilla)
-
-calculated_psnr_libaom_av1 = psnr(reconstruction_libaom_av1,reconstruction_rescaled_vanilla)
+calculated_psnr_hevc = psnr(reconstruction_HEVC,reconstruction_rescaled_vanilla)
 
 % calculated_psnr_svt_av1 = psnr(reconstruction_SVT_AV1,reconstruction_rescaled_vanilla)
 
