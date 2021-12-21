@@ -25,6 +25,12 @@ load(strcat(hologram_name, '.mat')); % Hol_3D_multi.mat
 real_matrix_rescaled_255 = rescale(real_matrix,0,255);
 imag_matrix_rescaled_255 = rescale(imag_matrix,0,255);
 
+min_raw_complex_real = min(min(real_matrix));
+max_raw_complex_real = max(max(real_matrix));
+
+min_raw_complex_imag = min(min(imag_matrix));
+max_raw_complex_imag = max(max(imag_matrix));
+
 wlen = 6.328e-07; % wave length
 area = 0.8; % area (?)
 zrec = 0.492015551750677; % reconstruction distance
@@ -36,14 +42,13 @@ width = 1920;  % hologram width (px)
 clear_output_dir
 
 %% HEVC
-
 matrices_regen_hevc_real = encode_decode_HEVC(real_matrix_rescaled_255, height, width, hologram_name, hologram_path, 'real')
 matrices_regen_hevc_imag = encode_decode_HEVC(imag_matrix_rescaled_255, height, width, hologram_name, hologram_path, 'imag')
 hevc_SNRs_real = calculate_SNR(real_matrix_rescaled_255,matrices_regen_hevc_real)
 hevc_SNRs_imag = calculate_SNR(imag_matrix_rescaled_255,matrices_regen_hevc_imag)
 
-%% DEBUG HEVC
 
+%% DEBUG HEVC
 if DEBUG == 1
     debug_hevc
 end
@@ -101,17 +106,22 @@ end
 
 %% RENDERING BLOCK (for raw complex matrix)
 
-% Regenerated vanilla hologram
+% Regenerated vanilla hologram (punto 4)
 hologram_vanilla = generate_bin(hologram_path, strcat(hologram_name,'_vanilla'),Hol,height, width, wlen, area, zrec);
 reconstruction_vanilla = hologram_reconstruction(hologram_path,strcat(hologram_name,'_vanilla'), height, width, wlen, area);
 
-% Regenerated vanilla rescaled hologram
+
+% Regenerated vanilla rescaled hologram %% why??
 raw_rescaled_complex = complex(real_matrix_rescaled_255, imag_matrix_rescaled_255);
 hologram_rescaled_vanilla = generate_bin(hologram_path, strcat(hologram_name,'_rescaled_vanilla'),raw_rescaled_complex,height, width, wlen, area, zrec);
 reconstruction_rescaled_vanilla = hologram_reconstruction(hologram_path,strcat(hologram_name,'_rescaled_vanilla'), height, width, wlen, area);
 % -- END of RENDERING BLOCK (for raw complex matrix) --
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for HEVC regenerated complex matrix)
+
+% ripristino i range originali
+matrices_regen_hevc_real{1} = rescale(matrices_regen_hevc_real{1},min_raw_complex_real, max_raw_complex_real);
+matrices_regen_hevc_imag{1} = rescale(matrices_regen_hevc_imag{1},min_raw_complex_imag, max_raw_complex_imag);
 
 matrix_regen_hevc_complex = complex(matrices_regen_hevc_real{1}, matrices_regen_hevc_imag{1});
 hologram_HEVC = generate_bin(hologram_path, strcat(hologram_name,'_HEVC'),matrix_regen_hevc_complex,height, width, wlen, area, zrec);
@@ -141,6 +151,9 @@ hologram_JPEG2000 = {};
 reconstruction_JPEG2000 = {};
 size_matrices_regen_jpeg2000_real = size(matrices_regen_jpeg2000_real);
 for i = 1:size_matrices_regen_jpeg2000_real(2)
+    matrices_regen_jpeg2000_real{i} = rescale(matrices_regen_jpeg2000_real{i},min_raw_complex_real, max_raw_complex_real);
+    matrices_regen_jpeg2000_imag{i} = rescale(matrices_regen_jpeg2000_imag{i},min_raw_complex_imag, max_raw_complex_imag);
+    
     matrix_regen_jpeg2000_complex = complex(matrices_regen_jpeg2000_real{i}, matrices_regen_jpeg2000_imag{i});
     hologram_JPEG2000{i} = generate_bin(hologram_path, strcat(hologram_name,'_JPEG2000'), matrix_regen_jpeg2000_complex, height, width, wlen, area, zrec);
     % Reconstruction using ASM
@@ -153,12 +166,16 @@ end
 
 %calculated_psnr_hevc = psnr(reconstruction_HEVC,reconstruction_rescaled_vanilla)
 
-calculated_psnr_libaom_av1 = psnr(reconstruction_libaom_av1,reconstruction_rescaled_vanilla)
+
+%calculated_psnr_hevc = psnr(reconstruction_HEVC,reconstruction_vanilla, max(max(reconstruction_HEVC)))
+
+%calculated_psnr_libaom_av1 = psnr(reconstruction_libaom_av1,reconstruction_rescaled_vanilla)
 
 % calculated_psnr_svt_av1 = psnr(reconstruction_SVT_AV1,reconstruction_rescaled_vanilla)
 
-% calculated_psnr_jpeg2000 = {};
-% for i = 1:size_matrices_regen_jpeg2000_real(2)
-%     calculated_psnr_jpeg2000{i} = psnr(reconstruction_JPEG2000{i},reconstruction_vanilla);
-% end
-% calculated_psnr_jpeg2000
+ calculated_psnr_jpeg2000 = {};
+ for i = 1:size_matrices_regen_jpeg2000_real(2)
+     calculated_psnr_jpeg2000{i} = psnr(reconstruction_JPEG2000{i},reconstruction_vanilla, 255);
+ end
+ calculated_psnr_jpeg2000
+

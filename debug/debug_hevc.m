@@ -9,6 +9,8 @@ end
 hevc_numbers_of_regen_matrix = size(matrices_regen_hevc_real);
 for i = 1:hevc_numbers_of_regen_matrix(2)
     HEVC_THIS_MUST_NOT_BE_0_MATRIX = minus(matrices_regen_hevc_real{i}, matrices_regen_hevc_imag{i});
+
+    % ~= fa il NOT bit a bit e dà 1 se sono diversi e 0 se sono uguali
     if HEVC_THIS_MUST_NOT_BE_0_MATRIX ~= zeros(height, width)
         throw(MException('HEVC:regeneratedmatrices', 'real and imaginary matrix are equals.'))
     end
