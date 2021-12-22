@@ -12,16 +12,16 @@
 % The version of Matlab for this code is R2010b
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function[reconstructionO] = hologram_reconstruction(datasetpath,filename, N, M, lambda, area)
+function[reconstructionO] = hologram_reconstruction(datasetpath,filename, N, M, lambda, area, zrec)
 % PARAMETERS
 
 %N = 1080;               % pixel height
 %M = 1920;               % pixel width
 %lambda = 6.3280e-07;    % wavelength in meter
 %area = 0.01;            % area size in meter
-z_start = 0.014;            % z start in meter
-z_end = 0.02;  % z end in meter
-z_step = 0.005; % z step in meter
+z_start = 0;            % z start in meter
+z_end = 0.00000001;  % z end in meter
+z_step = 0.00000001; % z step in meter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % READING HOLOGRAM OBJECT
 
@@ -55,7 +55,7 @@ for ii=1:S
     % SAVE RECONSTRUCTION AS JPG FILE
     p = recO;
     p = 255*(p - min(min(p)))/(max(max(p)) - min(min(p)));
-    %imwrite (p, gray, strcat(datasetpath,'jpeg/', filename,'_z_',int2str(z*1000000),'um.jpg'));
+    imwrite (p, gray, strcat(datasetpath,'jpeg/', filename,'_z_',int2str(z*1000000),'um.jpg'));
 
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

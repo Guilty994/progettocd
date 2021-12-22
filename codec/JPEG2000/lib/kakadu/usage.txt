@@ -789,26 +789,9 @@ Usage:
        Nonetheless, Kakadu can preserve this zero-valued CPFnum, but it does so
        by storing the otherwise impossible value 4095 in `Scpf_num', while
        setting `Scpf_profile' to the rather uninteresting value of
-       `Sprofile_PART1'.
-   Sbroadcast={<int>,ENUM<single,multi>,ENUM<irrev,rev>}
-       This parameter attribute provides more specific details for the
-       BROADCAST profile or corresponding-profile, associated with one of the
-       labels `Sprofile' = BROADCAST or `Scpf_profile' = BROADCAST.  During
-       codestream generation, if `Sbroadcast' is specified, `Sprofile' will
-       automatically be set to BROADCAST and `Sprf_num' will be set
-       accordingly, except where `Scpf_profile' is already equal to BROADCAST,
-       in which case the `Sbroadcast' attribute is used to determine the
-       complete corresponding profile number in `Scpf_num'.
-          The first field identifies the broadcast profile level, which is
-       currently required to lie in the range 0 through 11.  The profile level
-       identifies the maximum bit-rate (in Mbits/s meaning 10^6 bits/s) and
-       sample-rate (in Msamples/s meaning 10^6 samples/s) of a compressed video
-       stream, as described in Ammendment 4 to IS15444-1 and subsequently
-       augmented by Ammendment 8 to IS15444-1.  Levels are as follows: 0 means
-       unconstrained; 1 means 200Mbits/s,65Msamples/s; 2 means
-       200Mbits/s,130Msamples/s; 3 means 200Mbits/s,195Msamples/s; 4 means
-       400Mbits/s,260Msamples/s; 5 means 800Mbits/s,520Msamples/s; L >= 6 means
-       = 2^(L-6)*1600Mbits/s, 2^(L-6)*1200Msamples/s.
+       `Sprofile_P
+
+/s.
           The system does not explicitly impose these constraints, since they
        depend upon the intended frame rate -- this can readily be done at the
        application level.

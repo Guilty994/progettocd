@@ -13,7 +13,7 @@ yuv_export(Y_Hol3D,U_Hol3D,V_Hol3D,filename,numfrm);
 q_values = [4 7 10 20 30 40 51];
 regen_matrices = {}; % return values (matrices regenerated after encode and decode steps)
 
-for i = 1:1
+for i = 1:length(q_values)
     q = q_values(i); %i-th value acquisition
     q = int2str(q);  %integer to string conversion
     %metto le parentesi graffe prima di q perché altrimenti non mette lo
