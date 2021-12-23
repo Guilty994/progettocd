@@ -5,6 +5,9 @@ addpath('./debug/');
 
 %% SETUP
 
+% # of codec run/step/call
+Q_SIZE = 7;
+
 addpath('./script/');
 addpath("./script/YUV/");
 addpath("./script/TF/"); % Fourier transform
@@ -106,71 +109,96 @@ end
 % 5. effettuare il calcolo PSNR tra la matrice ottenuta al punto 4. e quella ottenuta al punto 3.
 
 %% RENDERING BLOCK (for raw complex matrix)
-
-% Regenerated vanilla hologram (punto 4)
-hologram_vanilla = generate_bin(hologram_path, strcat(hologram_name,'_vanilla'),Hol,height, width, wlen, area, zrec);
-reconstruction_vanilla = hologram_reconstruction(hologram_path,strcat(hologram_name,'_vanilla'), height, width, wlen, area, zrec);
-
+'START RENDERING BLOCK (for raw complex matrix)'
+% Reconstruction vanilla hologram
+reconstruction_vanilla = hologram_reconstruction(hologram_path,strcat(hologram_name,'_vanilla'), height, width, wlen, area, zrec, Hol);
+'END RENDERING BLOCK (for raw complex matrix)'
 % -- END of RENDERING BLOCK (for raw complex matrix) --
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for HEVC regenerated complex matrix)
-
-% ripristino i range originali
-matrices_regen_hevc_real{1} = rescale(matrices_regen_hevc_real{1},min_raw_complex_real, max_raw_complex_real);
-matrices_regen_hevc_imag{1} = rescale(matrices_regen_hevc_imag{1},min_raw_complex_imag, max_raw_complex_imag);
-
-matrix_regen_hevc_complex = complex(matrices_regen_hevc_real{1}, matrices_regen_hevc_imag{1});
-hologram_HEVC = generate_bin(hologram_path, strcat(hologram_name,'_HEVC'),matrix_regen_hevc_complex,height, width, wlen, area, zrec);
-% Reconstruction using ASM
-reconstruction_HEVC = hologram_reconstruction(hologram_path,strcat(hologram_name,'_HEVC'), height, width, wlen, area);
+'START COMPLEX REGENERATION and RENDERING BLOCK (for HEVC regenerated complex matrix)'
+reconstruction_HEVC = {};
+size_matrices_regen_HEVC_real = size(matrices_regen_hevc_real);
+for i = 1:size_matrices_regen_HEVC_real(2)
+    % Range remapping 
+    matrices_regen_hevc_real_ripristined_range = rescale(matrices_regen_hevc_real{i},min_raw_complex_real, max_raw_complex_real);
+    matrices_regen_hevc_imag_ripristined_range = rescale(matrices_regen_hevc_imag{i},min_raw_complex_imag, max_raw_complex_imag);
+    % Complex representation reconstruction
+    matrix_regen_hevc_complex = complex(matrices_regen_hevc_real_ripristined_range, matrices_regen_hevc_imag_ripristined_range);
+    % Reconstruction using ASM
+    reconstruction_HEVC{i} = hologram_reconstruction(hologram_path,strcat(hologram_name,'_q_',int2str(i),'_HEVC'), height, width, wlen, area, zrec, matrix_regen_hevc_complex);
+end
+'END COMPLEX REGENERATION and RENDERING BLOCK (for HEVC regenerated complex matrix)'
 % -- END of COMPLEX REGENERATION and RENDERING BLOCK (for HEVC regenerated complex matrix) --
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for SVT-AV1 regenerated complex matrix)
 
-matrix_regen_svt_av1_complex = complex(matrices_regen_svt_av1_real{1}, matrices_regen_svt_av1_imag{1});
-hologram_SVT_AV1 = generate_bin(hologram_path, strcat(hologram_name,'_SVT_AV1'),matrix_regen_svt_av1_complex,height, width, wlen, area, zrec);
-% Reconstruction using ASM
-reconstruction_SVT_AV1 = hologram_reconstruction(hologram_path,strcat(hologram_name,'_SVT_AV1'), height, width, wlen, area);
+'START COMPLEX REGENERATION and RENDERING BLOCK (for SVT-AV1 regenerated complex matrix)'
+
+reconstruction_SVT_AV1 = {};
+size_matrices_regen_SVT_AV1_real = size(matrices_regen_svt_av1_real);
+for i = 1:size_matrices_regen_SVT_AV1_real(2)
+    % Range remapping 
+    matrices_regen_svt_av1_real_ripristined_range = rescale(matrices_regen_svt_av1_real{i},min_raw_complex_real, max_raw_complex_real);
+    matrices_regen_svt_av1_imag_ripristined_range = rescale(matrices_regen_svt_av1_imag{i},min_raw_complex_imag, max_raw_complex_imag);
+    % Complex representation reconstruction
+    matrix_regen_svt_av1_complex = complex(matrices_regen_svt_av1_real_ripristined_range, matrices_regen_svt_av1_imag_ripristined_range);
+    % Reconstruction using ASM
+    reconstruction_SVT_AV1{i} = hologram_reconstruction(hologram_path,strcat(hologram_name,'_q_',int2str(i),'_SVT_AV1'), height, width, wlen, area, zrec, matrix_regen_svt_av1_complex);
+end
+
+'END COMPLEX REGENERATION and RENDERING BLOCK (for SVT-AV1 regenerated complex matrix)'
 % -- END of COMPLEX REGENERATION and RENDERING BLOCK (for SVT-AV1 regenerated complex matrix) --
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for LIBAOM-AV1 regenerated complex matrix)
+'START COMPLEX REGENERATION and RENDERING BLOCK (for LIBAOM-AV1 regenerated complex matrix)'
 
-matrix_regen_libaom_av1_complex = complex(matrices_regen_libaom_av1_real{1}, matrices_regen_libaom_av1_imag{1});
-hologram_libaom_av1 = generate_bin(hologram_path, strcat(hologram_name,'_LIBAOM_AV1'),matrix_regen_libaom_av1_complex,height, width, wlen, area, zrec);
-% Reconstruction using ASM
-reconstruction_libaom_av1 = hologram_reconstruction(hologram_path,strcat(hologram_name,'_LIBAOM_AV1'), height, width, wlen, area);
+reconstruction_libaom_av1 = {};
+size_matrices_regen_libaom_av1_real = size(matrices_regen_libaom_av1_real);
+for i = 1:size_matrices_regen_libaom_av1_real(2)
+    % Range remapping 
+    matrices_regen_libaom_av1_real_ripristined_range = rescale(matrices_regen_libaom_av1_real{i},min_raw_complex_real, max_raw_complex_real);
+    matrices_regen_libaom_av1_imag_ripristined_range = rescale(matrices_regen_libaom_av1_imag{i},min_raw_complex_imag, max_raw_complex_imag);
+    % Complex representation reconstruction
+    matrix_regen_libaom_av1_complex = complex(matrices_regen_libaom_av1_real_ripristined_range, matrices_regen_libaom_av1_imag_ripristined_range);
+    % Reconstruction using ASM
+    reconstruction_libaom_av1{i} = hologram_reconstruction(hologram_path,strcat(hologram_name,'_LIBAOM_AV1'), height, width, wlen, area, zrec, matrix_regen_libaom_av1_complex);
+end
+
+'END COMPLEX REGENERATION and RENDERING BLOCK (for LIBAOM-AV1 regenerated complex matrix)'
 % -- END of COMPLEX REGENERATION and RENDERING BLOCK (for LIBAOM-AV1 regenerated complex matrix) --
 
 %% COMPLEX REGENERATION and RENDERING BLOCK (for JPEG2000 regenerated complex matrix)
-
-hologram_JPEG2000 = {};
+'Start COMPLEX REGENERATION and RENDERING BLOCK (for JPEG2000 regenerated complex matrix)'
 reconstruction_JPEG2000 = {};
 size_matrices_regen_jpeg2000_real = size(matrices_regen_jpeg2000_real);
 for i = 1:size_matrices_regen_jpeg2000_real(2)
-    matrices_regen_jpeg2000_real{i} = rescale(matrices_regen_jpeg2000_real{i},min_raw_complex_real, max_raw_complex_real);
-    matrices_regen_jpeg2000_imag{i} = rescale(matrices_regen_jpeg2000_imag{i},min_raw_complex_imag, max_raw_complex_imag);
-    
-    matrix_regen_jpeg2000_complex = complex(matrices_regen_jpeg2000_real{i}, matrices_regen_jpeg2000_imag{i});
-    hologram_JPEG2000{i} = generate_bin(hologram_path, strcat(hologram_name,'_JPEG2000'), matrix_regen_jpeg2000_complex, height, width, wlen, area, zrec);
+    % Range remapping
+    matrices_regen_jpeg2000_real_ripristined_range = rescale(matrices_regen_jpeg2000_real{i},min_raw_complex_real, max_raw_complex_real);
+    matrices_regen_jpeg2000_imag_ripristined_range = rescale(matrices_regen_jpeg2000_imag{i},min_raw_complex_imag, max_raw_complex_imag);
+    % Complex representation reconstruction
+    matrix_regen_jpeg2000_complex = complex(matrices_regen_jpeg2000_real_ripristined_range, matrices_regen_jpeg2000_imag_ripristined_range);
     % Reconstruction using ASM
-    reconstruction_JPEG2000{i} = hologram_reconstruction(hologram_path, strcat(hologram_name,'_JPEG2000'), height, width, wlen, area);
+    reconstruction_JPEG2000{i} = hologram_reconstruction(hologram_path, strcat(hologram_name,'_JPEG2000'), height, width, wlen, area, zrec, matrix_regen_jpeg2000_complex);
 end
-'fine'
+'End COMPLEX REGENERATION and RENDERING BLOCK (for JPEG2000 regenerated complex matrix)'
 % -- END of COMPLEX REGENERATION and RENDERING BLOCK (for JPEG 2000 regenerated complex matrix) --
 
 %% PSNR calculations
 
-%calculated_psnr_hevc = psnr(reconstruction_HEVC,reconstruction_rescaled_vanilla)
+%calculated_psnr_hevc = cell(Q_SIZE);
+calculated_psnr_libaom_av1 = cell(1, Q_SIZE);
+calculated_psnr_svt_av1 = cell(1, Q_SIZE);
+calculated_psnr_jpeg2000 = cell(1, Q_SIZE);
 
-%calculated_psnr_hevc = psnr(reconstruction_HEVC,reconstruction_vanilla, max(max(reconstruction_HEVC)))
+for i= 1:Q_SIZE
+    %calculated_psnr_hevc{i} = psnr(reconstruction_HEVC{i},reconstruction_vanilla, max(max(reconstruction_HEVC{i})));
+    calculated_psnr_libaom_av1{i} = psnr(reconstruction_libaom_av1{i},reconstruction_vanilla, max(max(reconstruction_libaom_av1{i})));
+    calculated_psnr_svt_av1{i} = psnr(reconstruction_SVT_AV1{i},reconstruction_vanilla, max(max(reconstruction_SVT_AV1{i})));
+    calculated_psnr_jpeg2000{i} = psnr(reconstruction_JPEG2000{i},reconstruction_vanilla, max(max(reconstruction_JPEG2000{i})));
 
-%calculated_psnr_libaom_av1 = psnr(reconstruction_libaom_av1,reconstruction_rescaled_vanilla)
-
-% calculated_psnr_svt_av1 = psnr(reconstruction_SVT_AV1,reconstruction_rescaled_vanilla)
-
- calculated_psnr_jpeg2000 = {};
- for i = 1:size_matrices_regen_jpeg2000_real(2)
-     calculated_psnr_jpeg2000{i} = psnr(reconstruction_JPEG2000{i},reconstruction_vanilla, max(max(reconstruction_vanilla)));
- end
- calculated_psnr_jpeg2000
-
+end
+%calculated_psnr_hevc
+calculated_psnr_libaom_av1
+calculated_psnr_svt_av1
+calculated_psnr_jpeg2000

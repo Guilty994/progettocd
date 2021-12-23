@@ -5,7 +5,7 @@ imwrite(matrix,strcat(hologram_path, 'pgm/', hologram_name,'_',matrix_type,'.pgm
 
 %compression of .pgm file using kdu_compress
 back_to_root = '../../../../';
-bit_rates = linspace(0.5, 10, 20); % Qfactor
+bit_rates = [30 40 50 60 70 80 90]; % Qfactor
 j2c_generated = strings(length(bit_rates));
 pgm_generated = strings(length(bit_rates));
 for i = 1:length(bit_rates)
@@ -13,7 +13,7 @@ for i = 1:length(bit_rates)
     encode_jpeg_command = strcat('cd codec/JPEG2000/lib/kakadu && kdu_compress -i ', ...
         {' '},back_to_root, hologram_path, 'pgm/', hologram_name,'_',matrix_type, ...
         '.pgm -o ',{' '}, back_to_root, hologram_path, 'j2c/', hologram_name,'_',string(bit_rates(i)),'_',matrix_type,'.j2c',{' '}, ...
-        'Cycc=no -precise -rate', {' '}, string(bit_rates(i)))
+        'Cycc=no -precise Qfactor=', string(bit_rates(i)))
     dos(encode_jpeg_command{1});
 end
 

@@ -22,12 +22,12 @@ for i = 1:length(q_values)
     %(problema di runtime)
     encode_hevc_command = strcat('cd codec/HEVC && TAppEncoder.exe -c encoder_intra_main.cfg -i ../../', ...
     filename, ' -fr 1 -f 1 --SourceWidth=', int2str(width), ' --SourceHeight=', int2str(height), ...
-    ' --InputChromaFormat=400 --Profile=main_444_intra -q', {' '}, q , ' --InputBitDepth=8 --OutputBitDepth=8 -o ../../', hologram_path,'yuv/output_hevc_',matrix_type,'.yuv -b ../../', hologram_path,'bin/output_hevc.bin')
+    ' --InputChromaFormat=400 --Profile=main_444_intra -q', {' '}, q , ' --InputBitDepth=8 --OutputBitDepth=8 -o ../../', hologram_path,'yuv/reconstructed_yuv_hevc_',q,'_',matrix_type,'.yuv -b ../../', hologram_path,'bin/compressed_hevc_',q,'_',matrix_type,'.bin')
 
 dos(encode_hevc_command{1});
 
 % ~ = ingnored value
-[Y_Hol3D_decoded,~,~] = yuv_import(strcat(hologram_path, 'yuv/output_hevc_',matrix_type,'.yuv'),[width height],1);% qua stava il problema
+[Y_Hol3D_decoded,~,~] = yuv_import(strcat(hologram_path, 'yuv/reconstructed_yuv_hevc_',q,'_',matrix_type,'.yuv'),[width height],1);% qua stava il problema
 
 regen_matrices{i} = Y_Hol3D_decoded{1,1};
 
