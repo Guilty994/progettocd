@@ -1,7 +1,8 @@
 % parameters passed in the functions are in the workspace
-%% VANILLA RENDERING
+%% VANILLA RENDERING (!!! First of all, run this !!!)
 reconstrution_vanilla = vanilla_regen(hologram_path, hologram_name, width, height, wlen, area, zrec, original_matrix);
 
+% Code blocks below can be runned in any order
 %% HEVC
 HEVC_snr_psnr;
 
