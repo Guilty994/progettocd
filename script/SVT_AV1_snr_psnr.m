@@ -18,7 +18,7 @@ svt_av1_imag_matrices = encode_decode_SVT_AV1(imag_matrix_rescaled_255, height, 
 
     % PSNR calc. for SVT-AV1
     'SVT-AV1 PSNR Calc: START'
-    SVT_AV1_psnr = calculate_PSNR(reconstrution_vanilla,recontruction_SVT_AV1);
+    SVT_AV1_psnr = calculate_PSNR(reconstruction_vanilla,recontruction_SVT_AV1);
     'SVT-AV1 PSNR Calc: END'
     'SVT-AV1 operations: END'
 

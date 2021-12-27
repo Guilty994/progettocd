@@ -18,7 +18,7 @@ hevc_imag_matrices = encode_decode_HEVC(imag_matrix_rescaled_255, height, width,
 
     % PSNR calc. for HEVC
     'HEVC PSNR Calc: START'
-    HEVC_psnr = calculate_PSNR(reconstrution_vanilla,recontruction_HEVC);
+    HEVC_psnr = calculate_PSNR(reconstruction_vanilla,recontruction_HEVC);
     'HEVC PSNR Calc: END'
     'HEVC operations: END'
 

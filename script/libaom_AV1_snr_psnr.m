@@ -18,7 +18,7 @@ libaom_av1_imag_matrices = encode_decode_AV1_libaom(imag_matrix_rescaled_255, he
 
     % PSNR calc. for libaom AV1
     'libaom AV1 PSNR Calc: START'
-    libaom_AV1_psnr = calculate_PSNR(reconstrution_vanilla,recontruction_libaom_AV1);
+    libaom_AV1_psnr = calculate_PSNR(reconstruction_vanilla,recontruction_libaom_AV1);
     'libaom AV1 PSNR Calc: END'
     'libaom AV1 operations: END'
 
