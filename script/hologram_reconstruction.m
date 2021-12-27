@@ -14,7 +14,6 @@
 
 function[reconstructionO] = hologram_reconstruction(datasetpath,filename, N, M, lambda, area, zrec, hologram)
 % PARAMETERS
-
 %N = 1080;               % pixel height
 %M = 1920;               % pixel width
 %lambda = 6.3280e-07;    % wavelength in meter
