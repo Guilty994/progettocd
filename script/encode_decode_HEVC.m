@@ -11,7 +11,7 @@ numfrm = 1;
 yuv_export(Y_Hol3D,U_Hol3D,V_Hol3D,filename,numfrm);
 
 q_values = [4 7 10 20 30 40 51];
-regen_matrices = {}; % return values (matrices regenerated after encode and decode steps)
+regen_matrices = cell(length(q_values)); % return values (matrices regenerated after encode and decode steps)
 
 for i = 1:length(q_values)
     q = q_values(i); %i-th value acquisition

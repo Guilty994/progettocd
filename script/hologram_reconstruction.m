@@ -14,7 +14,6 @@
 
 function[reconstructionO] = hologram_reconstruction(datasetpath,filename, N, M, lambda, area, zrec, hologram)
 % PARAMETERS
-
 %N = 1080;               % pixel height
 %M = 1920;               % pixel width
 %lambda = 6.3280e-07;    % wavelength in meter
@@ -28,7 +27,9 @@ z_step = 0.000000000001; % z step in meter
 % fid = fopen(strcat(datasetpath, 'bin/', filename,'.bin'), 'r');
 % hologramO = fread(fid, [N, M], 'real*4')
 % fclose(fid);
-hologramO = hologram;
+FlippedHol = flip(hologram);
+FlippedHol = flip(FlippedHol, 2);
+hologramO = FlippedHol;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % OBJECT RECONSTRUCTED AT DIFFERENT Z-DISTANCES
