@@ -11,14 +11,14 @@ addpath(hologram_path);
 
 load(strcat(hologram_name,'.mat')); % Hol_3D_cat.mat
 
-% complex matrix splitting in real part and imaginary part
+% splitting complex matrix in real part and imaginary part
 [real_matrix, imag_matrix] = split_complex(Hol); % Hol is the complex matrix name in the .mat file
 
 % Range mapping & quantization
 range_mapping_and_quant;
 
 % Hologram info
-wlen = 6.328e-07; % wave length
+wlen = 6.328e-07; % wavelength
 zrec = 0.101474227192714; % reconstruction distance
 height = 8192; % hologram height (px)
 width = 8192;  % hologram width (px)
@@ -28,6 +28,6 @@ area = (height*width*pitch); % area (?)
 del_coding_files;
 
 %% SNR calc + Complex regeneration and rendering + PSNR calc
-% Siccome richiede molto tempo è consigliabile aprire lo script ed eseguire
-% un pezzo alla volta come impostato nello script
+% Since it takes a lot of time it is advisable to open the script 
+% and execute one piece at a time as set in the script
 SNR_PSNR_calc_CRR;

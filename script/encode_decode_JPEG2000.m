@@ -1,6 +1,6 @@
 function[regen_matrices] =  encode_decode_JPEG2000(matrix, hologram_name, hologram_path, matrix_type)
 regen_matrices = {};    
-%conversione matrice in .pgm
+%converting matrix into .pgm
 imwrite(matrix,strcat(hologram_path, 'pgm/', hologram_name,'_',matrix_type,'.pgm'));
 
 %compression of .pgm file using kdu_compress

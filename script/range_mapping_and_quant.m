@@ -1,6 +1,6 @@
 % real matrix and imaginary matrix rescaling %
-% Probabilmente invece di fare il rescale dobbiamo fare quella che
-% trasforma in image la matrice
+% Probably we have to transform the matrix into an image
+% instead of performing rescale
 real_matrix_rescaled_255 = rescale(real_matrix,0,255);
 imag_matrix_rescaled_255 = rescale(imag_matrix,0,255);
 real_matrix_rescaled_0_1 = rescale(real_matrix,0,1);

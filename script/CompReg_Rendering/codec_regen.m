@@ -3,13 +3,13 @@
 %                      compression/decompression step with CODEC
 % codec_imag_matrices = imaginary matrices obtained after
 %                      compression/decompression step with CODEC
-% real_min = real original matrix minimum value used for re-map to original
+% real_min = real original matrix minimum value used to re-map to the original
 %            ranges
-% real_max = real original matrix maximum value used for re-map to original
+% real_max = real original matrix maximum value used to re-map to the original
 %            ranges
-% imag_min = imaginary original matrix minimum value used for re-map to original
+% imag_min = imaginary original matrix minimum value used to re-map to the original
 %            ranges
-% imag_max = imaginary original matrix maximum value used for re-map to original
+% imag_max = imaginary original matrix maximum value used to re-map to the original
 %            ranges
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
