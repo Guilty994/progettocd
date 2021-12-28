@@ -35,7 +35,7 @@ for i = 1:length(q_values)
 
     dos(decode_av1_command{1});
 
-% ~ = ingnored value
+% ~ = ignored value
 [Y_Hol3D_decoded,~,~] = yuv_import(strcat(hologram_path, 'yuv/output_libaom_av1_',q,'_',matrix_type,'_decompressed.yuv'),[width height],numfrm);
 
 regen_matrices{i} = Y_Hol3D_decoded{1,1};
