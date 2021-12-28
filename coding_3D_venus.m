@@ -24,8 +24,6 @@ height = 1080; % hologram height (px)
 width = 1920;  % hologram width (px)
 area = (height*width*pitch); % area (?)
 
-original_matrix = Hol;
-
 % Clear directories
 del_coding_files;
 
