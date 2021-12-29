@@ -9,6 +9,13 @@
     'Loading completed.'
     [Hol_3D_cat_real_matrix, Hol_3D_cat_imag_matrix] = split_complex(Hol);
 
+    %Mean
+    mean_Hol_3D_cat_real_matrix = mean(mean(rescale(Hol_3D_cat_real_matrix,0,255)));
+    mean_Hol_3D_cat_imag_matrix = mean(mean(rescale(Hol_3D_cat_imag_matrix,0,255)));
+
+    %Variance 
+    var_Hol_3D_cat_real_matrix = mean(var(rescale(Hol_3D_cat_real_matrix,0,255)));
+    var_Hol_3D_cat_imag_matrix = mean(var(rescale(Hol_3D_cat_imag_matrix,0,255)));
 
     %Pearson correlation 
     
@@ -39,6 +46,17 @@
     load('Hol_3D_multi.mat'); 
     'Loading completed.'
     [Hol_3D_multi_real_matrix, Hol_3D_multi_imag_matrix] = split_complex(Hol);
+
+    %Mean
+    mean_Hol_3D_multi_real_matrix = mean(mean(rescale(Hol_3D_multi_real_matrix, 0, 255)));
+    mean_Hol_3D_multi_imag_matrix = mean(mean(rescale(Hol_3D_multi_imag_matrix, 0, 255)));
+
+    %Variance 
+    var_Hol_3D_multi_real_matrix = mean(var(rescale(Hol_3D_multi_real_matrix, 0, 255)));
+    var_Hol_3D_multi_imag_matrix = mean(var(rescale(Hol_3D_multi_imag_matrix, 0, 255)));
+
+    %Pearson correlation 
+
     COLUMNS_Hol_3D_multi_corr_real = corrcoef(Hol_3D_multi_real_matrix);
     COLUMNS_Hol_3D_multi_corr_img = corrcoef(Hol_3D_multi_imag_matrix);
 
@@ -65,6 +83,16 @@
     'Loading completed.'
 
     [Hol_3D_venus_real_matrix, Hol_3D_venus_imag_matrix] = split_complex(Hol);
+
+    %Mean
+    mean_Hol_3D_venus_real_matrix = mean(mean(rescale(Hol_3D_venus_real_matrix, 0, 255)));
+    mean_Hol_3D_venus_imag_matrix = mean(mean(rescale(Hol_3D_venus_imag_matrix, 0, 255)));
+
+    %Variance 
+    var_Hol_3D_venus_real_matrix = mean(var(rescale(Hol_3D_venus_real_matrix, 0, 255)));
+    var_Hol_3D_venus_imag_matrix = mean(var(rescale(Hol_3D_venus_imag_matrix, 0, 255)));
+
+    %Pearson correlation 
     
     COLUMNS_Hol_3D_venus_corr_real = corrcoef(Hol_3D_venus_real_matrix);
     COLUMNS_Hol_3D_venus_corr_img = corrcoef(Hol_3D_venus_imag_matrix);
@@ -95,6 +123,16 @@
 
     [CGH_cat8KD_real_matrix, CGH_cat8KD_imag_matrix] = split_complex(CGH.Hol);
 
+    %Mean
+    mean_CGH_cat8KD_real_matrix = mean(mean(rescale(CGH_cat8KD_real_matrix, 0, 255)));
+    mean_CGH_cat8KD_imag_matrix = mean(mean(rescale(CGH_cat8KD_imag_matrix, 0, 255)));
+
+    %Variance 
+    var_CGH_cat8KD_real_matrix = mean(var(rescale(CGH_cat8KD_real_matrix, 0, 255)));
+    var_CGH_cat8KD_imag_matrix = mean(var(rescale(CGH_cat8KD_imag_matrix, 0, 255)));
+
+    %Pearson correlation 
+
     COLUMNS_CGH_cat8KD_corr_real = corrcoef(CGH_cat8KD_real_matrix);
     COLUMNS_CGH_cat8KD_corr_img = corrcoef(CGH_cat8KD_imag_matrix);
 
@@ -121,6 +159,16 @@
     'Loading completed.'
 
     [CGH_venus8KD_real_matrix, CGH_venus8KD_imag_matrix] = split_complex(CGH.Hol);
+
+    %Mean
+    mean_CGH_venus8KD_real_matrix = mean(mean(rescale(CGH_venus8KD_real_matrix, 0, 255)));
+    mean_CGH_venus8KD_imag_matrix = mean(mean(rescale(CGH_venus8KD_imag_matrix, 0, 255)));
+
+    %Variance 
+    var_CGH_venus8KD_real_matrix = mean(var(rescale(CGH_venus8KD_real_matrix, 0, 255)));
+    var_CGH_venus8KD_imag_matrix = mean(var(rescale(CGH_venus8KD_imag_matrix, 0, 255)));
+
+    %Pearson correlation 
 
     COLUMNS_CGH_venus8KD_corr_real = corrcoef(CGH_venus8KD_real_matrix);
     COLUMNS_CGH_venus8KD_corr_img = corrcoef(CGH_venus8KD_imag_matrix);
