@@ -10,8 +10,11 @@ HEVC_snr_psnr;
 JPEG2000_snr_psnr;
 
 %% SVT-AV1
-SVT_AV1_snr_psnr;
-
+if width <= 4096
+    SVT_AV1_snr_psnr;
+else
+    'Hologram width is bigger than SVT-AV1 max supported width'
+end
 %% libaom AV1
 libaom_AV1_snr_psnr;
 

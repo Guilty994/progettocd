@@ -21,6 +21,8 @@ jpeg2000_imag_matrices = encode_decode_JPEG2000(imag_matrix_rescaled_0_1, hologr
     'JPEG2000 PSNR Calc: START'
     JPEG2000_psnr = calculate_PSNR(reconstruction_vanilla,recontruction_JPEG2000);
     'JPEG2000 PSNR Calc: END'
+    'File cleaning...'
+    clear jpeg2000_real_matrices jpeg2000_imag_matrices recontruction_JPEG2000
     'JPEG2000 operations: END'
 
     %% DEBUG JPEG2000

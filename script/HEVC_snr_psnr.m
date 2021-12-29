@@ -20,6 +20,8 @@ hevc_imag_matrices = encode_decode_HEVC(imag_matrix_rescaled_255, height, width,
     'HEVC PSNR Calc: START'
     HEVC_psnr = calculate_PSNR(reconstruction_vanilla,recontruction_HEVC);
     'HEVC PSNR Calc: END'
+    'File cleaning...'
+    clear hevc_real_matrices hevc_imag_matrices recontruction_HEVC;
     'HEVC operations: END'
 
     %% DEBUG HEVC

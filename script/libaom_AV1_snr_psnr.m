@@ -20,6 +20,8 @@ libaom_av1_imag_matrices = encode_decode_AV1_libaom(imag_matrix_rescaled_255, he
     'libaom AV1 PSNR Calc: START'
     libaom_AV1_psnr = calculate_PSNR(reconstruction_vanilla,recontruction_libaom_AV1);
     'libaom AV1 PSNR Calc: END'
+    'File cleaning...'
+    clear libaom_av1_real_matrices libaom_av1_imag_matrices recontruction_libaom_AV1
     'libaom AV1 operations: END'
 
     %% DEBUG LIBAOM_AV1
