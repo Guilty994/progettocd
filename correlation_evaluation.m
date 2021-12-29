@@ -1,7 +1,6 @@
 % Load all datasets
 
 % Interfere 1
-    
     %% Hol_3D_cat.mat
     'Loading... Hol_3D_cat.mat'
     addpath('./script/');
@@ -9,14 +8,29 @@
     load('Hol_3D_cat.mat'); 
     'Loading completed.'
     [Hol_3D_cat_real_matrix, Hol_3D_cat_imag_matrix] = split_complex(Hol);
-    Hol_3D_cat_corr_real = corrcoef(Hol_3D_cat_real_matrix);
-    Hol_3D_cat_corr_img = corrcoef(Hol_3D_cat_imag_matrix);
 
-    figure('Name','Hol_3D_cat_corr_real','NumberTitle','off'), imshow(Hol_3D_cat_corr_real,[])
+
+    %Pearson correlation 
+    
+    COLUMNS_Hol_3D_cat_corr_real = corrcoef(Hol_3D_cat_real_matrix);
+    COLUMNS_Hol_3D_cat_corr_img = corrcoef(Hol_3D_cat_imag_matrix);
+
+    ROW_Hol_3D_cat_corr_real = corrcoef(transpose(Hol_3D_cat_real_matrix));
+    ROW_Hol_3D_cat_corr_img = corrcoef(transpose(Hol_3D_cat_imag_matrix));
+
+
+    figure('Name','COLUMNS_Hol_3D_cat_corr_real','NumberTitle','off'), imshow(COLUMNS_Hol_3D_cat_corr_real,[])
     colormap(jet)
 
-    figure('Name','Hol_3D_cat_corr_img','NumberTitle','off'), imshow(Hol_3D_cat_corr_img,[])
+    figure('Name','COLUMNS_Hol_3D_cat_corr_img','NumberTitle','off'), imshow(COLUMNS_Hol_3D_cat_corr_img,[])
     colormap(jet)
+
+    figure('Name','ROW_Hol_3D_cat_corr_real','NumberTitle','off'), imshow(ROW_Hol_3D_cat_corr_real,[])
+    colormap(jet)
+
+    figure('Name','ROW_Hol_3D_cat_corr_img','NumberTitle','off'), imshow(ROW_Hol_3D_cat_corr_img,[])
+    colormap(jet)
+
     
     %% Hol_3D_multi.mat
     'Loading... Hol_3D_multi.mat'
@@ -25,13 +39,22 @@
     load('Hol_3D_multi.mat'); 
     'Loading completed.'
     [Hol_3D_multi_real_matrix, Hol_3D_multi_imag_matrix] = split_complex(Hol);
-    Hol_3D_multi_corr_real = corrcoef(Hol_3D_multi_real_matrix);
-    Hol_3D_multi_corr_img = corrcoef(Hol_3D_multi_imag_matrix);
+    COLUMNS_Hol_3D_multi_corr_real = corrcoef(Hol_3D_multi_real_matrix);
+    COLUMNS_Hol_3D_multi_corr_img = corrcoef(Hol_3D_multi_imag_matrix);
 
-    figure('Name','HHol_3D_multi_corr_real','NumberTitle','off'), imshow(Hol_3D_multi_corr_real,[])
+    ROW_Hol_3D_multi_corr_real = corrcoef(transpose(Hol_3D_multi_real_matrix));
+    ROW_Hol_3D_multi_corr_img = corrcoef(transpose(Hol_3D_multi_imag_matrix));
+
+    figure('Name','COLUMNS_Hol_3D_multi_corr_real','NumberTitle','off'), imshow(COLUMNS_Hol_3D_multi_corr_real,[])
     colormap(jet)
 
-    figure('Name','Hol_3D_multi_corr_img','NumberTitle','off'), imshow(Hol_3D_multi_corr_img,[])
+    figure('Name','COLUMNS_Hol_3D_multi_corr_img','NumberTitle','off'), imshow(COLUMNS_Hol_3D_multi_corr_img,[])
+    colormap(jet)
+
+    figure('Name','ROW_Hol_3D_multi_corr_real','NumberTitle','off'), imshow(ROW_Hol_3D_multi_corr_real,[])
+    colormap(jet)
+
+    figure('Name','ROW_Hol_3D_multi_corr_img','NumberTitle','off'), imshow(ROW_Hol_3D_multi_corr_img,[])
     colormap(jet)
 
     %% Hol_3D_cat.mat
@@ -39,15 +62,26 @@
     addpath('./script/');
     addpath('./dataset/Interfere1/3D_Venus/');
     load('Hol_3D_venus.mat'); 
+    'Loading completed.'
 
     [Hol_3D_venus_real_matrix, Hol_3D_venus_imag_matrix] = split_complex(Hol);
-    Hol_3D_venus_corr_real = corrcoef(Hol_3D_venus_real_matrix);
-    Hol_3D_venus_corr_img = corrcoef(Hol_3D_venus_imag_matrix);
+    
+    COLUMNS_Hol_3D_venus_corr_real = corrcoef(Hol_3D_venus_real_matrix);
+    COLUMNS_Hol_3D_venus_corr_img = corrcoef(Hol_3D_venus_imag_matrix);
 
-    figure('Name','Hol_3D_venus_corr_real','NumberTitle','off'), imshow(Hol_3D_venus_corr_real,[])
+    ROW_Hol_3D_venus_corr_real = corrcoef(transpose(Hol_3D_venus_real_matrix));
+    ROW_Hol_3D_venus_corr_img = corrcoef(transpose(Hol_3D_venus_imag_matrix));
+
+    figure('Name','COLUMNS_Hol_3D_venus_corr_real','NumberTitle','off'), imshow(COLUMNS_Hol_3D_venus_corr_real,[])
     colormap(jet)
 
-    figure('Name','Hol_3D_venus_corr_img','NumberTitle','off'), imshow(Hol_3D_venus_corr_img,[])
+    figure('Name','COLUMNS_Hol_3D_venus_corr_img','NumberTitle','off'), imshow(COLUMNS_Hol_3D_venus_corr_img,[])
+    colormap(jet)
+
+    figure('Name','ROW_Hol_3D_venus_corr_real','NumberTitle','off'), imshow(ROW_Hol_3D_venus_corr_real,[])
+    colormap(jet)
+
+    figure('Name','ROW_Hol_3D_venus_corr_img','NumberTitle','off'), imshow(ROW_Hol_3D_venus_corr_img,[])
     colormap(jet)
 
 % Interfere 2
@@ -57,30 +91,51 @@
     addpath('./script/');
     addpath('./dataset/Interfere2/cat8KD/');
     load('CGH_cat8KD.mat');
+    'Loading completed.'
 
     [CGH_cat8KD_real_matrix, CGH_cat8KD_imag_matrix] = split_complex(CGH.Hol);
-    CGH_cat8KD_corr_real = corrcoef(CGH_cat8KD_real_matrix);
-    CGH_cat8KD_corr_img = corrcoef(CGH_cat8KD_imag_matrix);
 
-    figure('Name','CGH_cat8KD_corr_real','NumberTitle','off'), imshow(CGH_cat8KD_corr_real,[])
+    COLUMNS_CGH_cat8KD_corr_real = corrcoef(CGH_cat8KD_real_matrix);
+    COLUMNS_CGH_cat8KD_corr_img = corrcoef(CGH_cat8KD_imag_matrix);
+
+    ROW_cat8KD_corr_real = corrcoef(transpose(CGH_cat8KD_real_matrix));
+    ROW_CGH_cat8KD_corr_img = corrcoef(transpose(CGH_cat8KD_imag_matrix));
+
+    figure('Name','COLUMNS_CGH_cat8KD_corr_real','NumberTitle','off'), imshow(COLUMNS_CGH_cat8KD_corr_real,[])
     colormap(jet)
 
-    figure('Name','CGH_cat8KD_corr_img','NumberTitle','off'), imshow(CGH_cat8KD_corr_img,[])
+    figure('Name','COLUMNS_CGH_cat8KD_corr_img','NumberTitle','off'), imshow(COLUMNS_CGH_cat8KD_corr_img,[])
     colormap(jet)
 
+    figure('Name','ROW_cat8KD_corr_real','NumberTitle','off'), imshow(ROW_cat8KD_corr_real,[])
+    colormap(jet)
+
+    figure('Name','ROW_CGH_cat8KD_corr_img','NumberTitle','off'), imshow(ROW_CGH_cat8KD_corr_img,[])
+    colormap(jet)
 
     %% CGH_cat8KD.mat
     'Loading... CGH_venus8KD.mat'
     addpath('./script/');
     addpath('./dataset/Interfere2/venus8KD/');
     load('CGH_venus8KD.mat');
+    'Loading completed.'
 
     [CGH_venus8KD_real_matrix, CGH_venus8KD_imag_matrix] = split_complex(CGH.Hol);
-    CGH_venus8KD_corr_real = corrcoef(CGH_venus8KD_real_matrix);
-    CGH_venus8KD_corr_img = corrcoef(CGH_venus8KD_imag_matrix);
 
-    figure('Name','CGH_venus8KD_corr_real','NumberTitle','off'), imshow(CGH_venus8KD_corr_real,[])
+    COLUMNS_CGH_venus8KD_corr_real = corrcoef(CGH_venus8KD_real_matrix);
+    COLUMNS_CGH_venus8KD_corr_img = corrcoef(CGH_venus8KD_imag_matrix);
+
+    ROW_CGH_venus8KD_corr_real = corrcoef(transpose(CGH_venus8KD_real_matrix));
+    ROW_CGH_venus8KD_corr_img = corrcoef(transpose(CGH_venus8KD_imag_matrix));
+
+    figure('Name','COLUMNS_CGH_venus8KD_corr_real','NumberTitle','off'), imshow(COLUMNS_CGH_venus8KD_corr_real,[])
     colormap(jet)
 
-    figure('Name','CGH_venus8KD_corr_img','NumberTitle','off'), imshow(CGH_venus8KD_corr_img,[])
+    figure('Name','COLUMNS_CGH_venus8KD_corr_img','NumberTitle','off'), imshow(COLUMNS_CGH_venus8KD_corr_img,[])
+    colormap(jet)
+
+    figure('Name','ROW_CGH_venus8KD_corr_real','NumberTitle','off'), imshow(ROW_CGH_venus8KD_corr_real,[])
+    colormap(jet)
+
+    figure('Name','ROW_CGH_venus8KD_corr_img','NumberTitle','off'), imshow(ROW_CGH_venus8KD_corr_img,[])
     colormap(jet)
