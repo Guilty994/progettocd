@@ -152,4 +152,4 @@ end
 
 
 %% save
-save('benchmark\compression_rateo\cr.mat')
+save('benchmark\compression_ratio\cr.mat')
