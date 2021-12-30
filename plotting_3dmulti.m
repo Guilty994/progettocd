@@ -1,16 +1,16 @@
 %% histogram 3d multi
 
-hevc_real = mean(CR_3d_multi_hevc_real)
-jpeg_2000_real = mean(CR_3d_multi_jpeg2000_real)
-libaom_av1_real = mean(CR_3d_multi_libaom_real)
-svt_av1_real = mean(CR_3d_multi_svt_real)
+hevc_real = mean(hevc_multi3d_SNR_real)
+jpeg_2000_real = mean(jpeg2000_multi3d_SNR_real)
+libaom_av1_real = mean(libaom_av1_multi3d_SNR_real)
+svt_av1_real = mean(svt_av1_multi3d_SNR_real)
 
 means_real = [hevc_real,jpeg_2000_real,libaom_av1_real,svt_av1_real]
 
-hevc_imag = mean(CR_3d_multi_hevc_imag)
-jpeg_2000_imag = mean(CR_3d_multi_jpeg2000_imag)
-libaom_av1_imag = mean(CR_3d_multi_libaom_imag)
-svt_av1_imag = mean(CR_3d_multi_svt_imag)
+hevc_imag = mean(hevc_multi3d_SNR_imag)
+jpeg_2000_imag = mean(jpeg2000_multi3d_SNR_imag)
+libaom_av1_imag = mean(libaom_av1_multi3d_SNR_imag)
+svt_av1_imag = mean(svt_av1_multi3d_SNR_imag)
 
 means_imag = [hevc_imag,jpeg_2000_imag,libaom_av1_imag,svt_av1_imag]
 
@@ -24,3 +24,27 @@ data_imag = means_imag';
     grid minor;
     set(gca,'XTickLabel',{'HEVC','JPEG 2000','libaom AV1','SVT-AV1'});
     legend('real', 'imag');
+
+
+
+  %% basic plotting
+
+  x_axis = [1 2 3 4 5 6 7];
+
+  plot(x_axis, hevc_multi3d_SNR_real, '-|','MarkerSize',10,'LineWidth',2);
+  hold on
+  plot(x_axis, flip(jpeg2000_multi3d_SNR_real),'-|','MarkerSize',10,'LineWidth',2);
+  hold on
+  plot(x_axis, libaom_av1_multi3d_SNR_real, '-|','MarkerSize',10,'LineWidth',2);
+  hold on
+  plot(x_axis, svt_av1_multi3d_SNR_real, '-|','MarkerSize',10,'LineWidth',2);
+  hold off
+  grid on
+  grid minor
+
+  xlabel('q values')
+  ylabel('SNR [dB]')
+
+  legend('HEVC','JPEG 2000', 'libaom AV1','SVT-AV1')
+  lgd = legend;
+  lgd.FontWeight = 'bold'
