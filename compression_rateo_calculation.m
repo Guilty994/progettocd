@@ -103,3 +103,53 @@ size_libaom_Hol_8KD_venus_imag = libaom_cr_gather('./dataset/Interfere2/venus8KD
 
 %% save
 save('benchmark\file_sizes\sizes.mat')
+
+%% CR evaluation
+
+SIZE = 7;
+
+for i=1:SIZE
+    % 3d cat
+    CR_3d_cat_hevc_real(i) = size_RAW_Hol_3D_cat_real / size_HEVC_Hol_3D_cat_real(i);
+    CR_3d_cat_hevc_imag(i) = size_RAW_Hol_3D_cat_imag / size_HEVC_Hol_3D_cat_imag(i);
+    CR_3d_cat_jpeg2000_real(i) = size_RAW_Hol_3D_cat_real / size_jpeg2000_Hol_3D_cat_real(i);
+    CR_3d_cat_jpeg2000_imag(i) = size_RAW_Hol_3D_cat_imag / size_jpeg2000_Hol_3D_cat_imag(i);
+    CR_3d_cat_libaom_real(i) = size_RAW_Hol_3D_cat_real / size_libaom_Hol_3D_cat_real(i);
+    CR_3d_cat_libaom_imag(i) = size_RAW_Hol_3D_cat_imag / size_libaom_Hol_3D_cat_imag(i);
+    % 3d multi
+    CR_3d_multi_hevc_real(i) = size_RAW_Hol_3D_multi_real / size_HEVC_Hol_3D_multi_real(i);
+    CR_3d_multi_hevc_imag(i) = size_RAW_Hol_3D_multi_imag / size_HEVC_Hol_3D_multi_imag(i);
+    CR_3d_multi_jpeg2000_real(i) = size_RAW_Hol_3D_multi_real / size_jpeg2000_Hol_3D_multi_real(i);
+    CR_3d_multi_jpeg2000_imag(i) = size_RAW_Hol_3D_multi_imag / size_jpeg2000_Hol_3D_multi_imag(i);
+    CR_3d_multi_libaom_real(i) = size_RAW_Hol_3D_multi_real / size_libaom_Hol_3D_multi_real(i);
+    CR_3d_multi_libaom_imag(i) = size_RAW_Hol_3D_multi_imag / size_libaom_Hol_3D_multi_imag(i);
+    CR_3d_multi_svt_real(i) = size_RAW_Hol_3D_multi_real / size_svt_Hol_3D_multi_real(i);
+    CR_3d_multi_svt_imag(i) = size_RAW_Hol_3D_multi_imag / size_svt_Hol_3D_multi_imag(i);
+    % 3d venus
+    CR_3d_venus_hevc_real(i) = size_RAW_Hol_3D_venus_real / size_HEVC_Hol_3D_venus_real(i);
+    CR_3d_venus_hevc_imag(i) = size_RAW_Hol_3D_venus_imag / size_HEVC_Hol_3D_venus_imag(i);
+    CR_3d_venus_jpeg2000_real(i) = size_RAW_Hol_3D_venus_real / size_jpeg2000_Hol_3D_venus_real(i);
+    CR_3d_venus_jpeg2000_imag(i) = size_RAW_Hol_3D_venus_imag / size_jpeg2000_Hol_3D_venus_imag(i);
+    CR_3d_venus_libaom_real(i) = size_RAW_Hol_3D_venus_real / size_libaom_Hol_3D_venus_real(i);
+    CR_3d_venus_libaom_imag(i) = size_RAW_Hol_3D_venus_imag / size_libaom_Hol_3D_venus_imag(i);
+    CR_3d_venus_svt_real(i) = size_RAW_Hol_3D_venus_real / size_svt_Hol_3D_venus_real(i);
+    CR_3d_venus_svt_imag(i) = size_RAW_Hol_3D_venus_imag / size_svt_Hol_3D_venus_imag(i);
+    % cat 8kd
+    CR_8KD_cat_hevc_real(i) = size_RAW_Hol_8KD_cat_real / size_HEVC_Hol_8KD_cat_real(i);
+    CR_8KD_cat_hevc_imag(i) = size_RAW_Hol_8KD_cat_imag / size_HEVC_Hol_8KD_cat_imag(i);
+    CR_8KD_cat_jpeg2000_real(i) = size_RAW_Hol_8KD_cat_real / size_jpeg2000_Hol_8KD_cat_real(i);
+    CR_8KD_cat_jpeg2000_imag(i) = size_RAW_Hol_8KD_cat_imag / size_jpeg2000_Hol_8KD_cat_imag(i);
+    CR_8KD_cat_libaom_real(i) = size_RAW_Hol_8KD_cat_real / size_libaom_Hol_8KD_cat_real(i);
+    CR_8KD_cat_libaom_imag(i) = size_RAW_Hol_8KD_cat_imag / size_libaom_Hol_8KD_cat_imag(i);
+    % venus 8kd
+    CR_8KD_venus_hevc_real(i) = size_RAW_Hol_8KD_venus_real / size_HEVC_Hol_8KD_venus_real(i);
+    CR_8KD_venus_hevc_imag(i) = size_RAW_Hol_8KD_venus_imag / size_HEVC_Hol_8KD_venus_imag(i);
+    CR_8KD_venus_jpeg2000_real(i) = size_RAW_Hol_8KD_venus_real / size_jpeg2000_Hol_8KD_venus_real(i);
+    CR_8KD_venus_jpeg2000_imag(i) = size_RAW_Hol_8KD_venus_imag / size_jpeg2000_Hol_8KD_venus_imag(i);
+    CR_8KD_venus_libaom_real(i) = size_RAW_Hol_8KD_venus_real / size_libaom_Hol_8KD_venus_real(i);
+    CR_8KD_venus_libaom_imag(i) = size_RAW_Hol_8KD_venus_imag / size_libaom_Hol_8KD_venus_imag(i);
+end
+
+
+%% save
+save('benchmark\compression_rateo\cr.mat')
