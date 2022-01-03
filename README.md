@@ -2,32 +2,17 @@
 
 In this repo we aim to reproduce the experimental work proposed in "Performance of Standard Codecs and Image Quality Assessment at Different Distances and Perspectives" to evaluate CGH (Computer Generated Hologram) generated with differents algorithms.
 
-## To-do list
-  - [ ] User manual
-### Matlab Add-on required
-  - Signal Processing Toolbox
+# Requirements 
+
+- Windows 10
+- Matlab
   - Image Processing Toolbox
-### Pre-encoding
-  - [x] Acquire holographic data
-  - [ ] Undestand the data
-    - [x]  Grayscale
-    - [ ]  RGB
-  - [ ]  Reconstruct hologram using a practical reconstruction algorithm (ASM)
-  - [ ]  Categorize the data (raw data, processed data, ...)
-  - [ ]  Data analysis
-   - [ ]  Real
-   - [ ]  Imaginary
-### Encoding
-#### Grayscale
-- [X] HEVC/H.265
-- [X] JPEG 2000
-- [X] svt-AV1
-- [X] libaom-AV1
-#### RGB
-- [ ] HEVC/H.265
-- [ ] JPEG 2000
-- [ ] AV1
-- [ ] VP9 (?)
-### Post encoding
-- [ ] PSNR
-- [ ] CR (?)
+  - Signal Processing Toolbox
+
+# Usage
+
+On first lunch the eviorment must be setted. The command ``` setup_environment ``` will generate the workspace and download the datasets.
+
+To execture the benchmarks the command ``` benchmark ``` can be used.
+
+For more documentation please refer to the related paper [LINK].
