@@ -11,8 +11,7 @@ In this repo we aim to reproduce the experimental work proposed in "Performance 
 
 # Usage
 
-On first lunch the eviorment must be setted. The command ``` setup_environment ``` will generate the workspace and download the datasets.
-
+The command ``` setup_environment ``` will generate the workspace and download the datasets.
 To execture the benchmarks the command ``` benchmark ``` can be used.
 
 For more documentation please refer to the related paper [LINK].
