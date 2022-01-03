@@ -1,6 +1,6 @@
 # Evaluation of compression technique on holographic data using standard codec for image and video
 
-In this repo we aim to reproduce the experimental work proposed in "Performance of Standard Codecs and Image Quality Assessment at Different Distances and Perspectives" to evaluate CGH (Computer Generated Hologram) generated with differents algorithms.
+In this repo we aim to reproduce the experimental work proposed in "Performance of Standard Codecs and Image Quality Assessment at Different Distances and Perspectives" to evaluate CGH (Computer Generated Hologram) generated with differents algorithms. Here we give an implementation of this workflow on Matlab as a starting point for future sperimentation.
 
 # Requirements 
 
