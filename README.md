@@ -13,6 +13,6 @@ In this repo we aim to reproduce the experimental work proposed in "Performance 
 
 - The command ``` setup_environment ``` will generate the workspace and download the datasets.
 
-- To execture the benchmarks the command ``` benchmark ``` can be used.
+- The command ``` benchmark ``` will start the benchmarking process on all existing datasets.
 
 For more documentation please refer to the related paper [LINK].
