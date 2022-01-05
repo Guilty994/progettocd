@@ -1,5 +1,0 @@
-dos('erase /Q dataset\Interfere1\3D_Multi\bin\*')
-dos('erase /Q dataset\Interfere1\3D_Multi\yuv\*')
-dos('erase /Q dataset\Interfere1\3D_Multi\jpeg\*')
-dos('erase /Q dataset\Interfere1\3D_Multi\pgm\*')
-dos('erase /Q dataset\Interfere1\3D_Multi\j2c\*')
