@@ -26,7 +26,7 @@ for i = 1:length(q_values)
 dos(encode_hevc_command{1});
 
 % ~ = ignored value
-[Y_Hol3D_decoded,~,~] = yuv_import(strcat(hologram_path, 'yuv/reconstructed_yuv_hevc_',q,'_',matrix_type,'.yuv'),[width height],1);% qua stava il problema
+[Y_Hol3D_decoded,~,~] = yuv_import(strcat(hologram_path, 'yuv/reconstructed_yuv_hevc_',q,'_',matrix_type,'.yuv'),[width height],1);
 
 regen_matrices{i} = Y_Hol3D_decoded{1,1};
 
